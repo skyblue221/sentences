@@ -502,7 +502,7 @@
 const SHEET_ID = "1sWWy8aRSDYZWZVc9tgZT6BrCcFtuTOWLIxUD7b_WT_o";
 const SHEET_NAME = "Sheet1";
 // Google Apps Script 웹앱 URL — 배포 후 아래에 붙여넣기
-let GAS_URL = localStorage.getItem('gasUrl') || '';
+let GAS_URL = 'https://script.google.com/macros/s/AKfycbzhxFT-zzg8d93FXQ6drRjClEp-DQwBNgjT1h6k-9eRzQqeNTtwnGxKVpYFCv-1keek/exec';
 
 let sentences = [];
 let currentFilter = '전체';
@@ -512,15 +512,11 @@ let selectedTags = [];
 document.getElementById('inputDate').value = new Date().toISOString().split('T')[0];
 
 // ── GAS URL 설정 확인 ──
-function checkSetup() {
-  if (!GAS_URL) {
-    document.getElementById('setupBanner').style.display = 'flex';
-  }
-}
+function checkSetup() { /* GAS URL 설정 완료 */ }
 
 function saveGasUrl() {
   const url = document.getElementById('gasUrlInput').value.trim();
-  if (!url.startsWith('https://script.google.com/macros/s/AKfycbzhxFT-zzg8d93FXQ6drRjClEp-DQwBNgjT1h6k-9eRzQqeNTtwnGxKVpYFCv-1keek/exec')) {
+  if (!url.startsWith('https://script.google.com')) {
     showToast('올바른 Apps Script URL을 입력해주세요.', true);
     return;
   }
